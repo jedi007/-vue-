@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>俄罗斯方块（VUE）</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css">
+		</style>
+		
+		<script type="text/javascript">
+			var app;
+			$(function(){
+				initGamediv();
+				
+				
+			    app = new Vue({
+			        el: '#gamediv',
+			        data: {
+			        	nowarray:currentarray,
+			        	cellWidth:cellWidth,
+			        	cellHeight:cellHeight,
+			        	updatakey:true
+			        }
+			        
+			    });
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="gamediv" :style="{top:cellHeight+'px', left:'50px', width:cellWidth*10+'px', height:cellHeight*20+'px'}">
+		    <div style="display: none;">
+		    	{{updatakey}}
+		    </div>
+		</div>
+		
+		<div style="position: absolute;left:500px;">
+			<button type="button" onclick="test()">Click Me!</button>
+			<button type="button" onclick="bigger()">Bigger!</button>
+			<button type="button" onclick="smaller()">Smaller!</button>
+			<button type="button" onclick="RestoreDefault()">Restore default!</button>
+		</div>
+		
+		<script>
+			function test(){
+				for(var i = 0;i < 20;i++)
+				{
+					for(var j = 0;j<10;j++)
+					{
+						currentarray[i][j] = app.updatakey;
+					}
+				}
+				
+				app.updatakey = !app.updatakey;
+				
+			}
+			
+			function bigger(){
+				app.cellWidth++;
+				app.cellHeight++;
+			}
+			
+			function smaller(){
+				app.cellWidth--;
+				app.cellHeight--;
+			}
+			
+			function RestoreDefault(){
+				app.cellWidth = cellWidth;
+				app.cellHeight = cellHeight;
+			}
+		</script>
+	</body>
+</html>
