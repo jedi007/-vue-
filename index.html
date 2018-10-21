@@ -5,41 +5,21 @@
 		<title>俄罗斯方块（VUE）</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/models.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/game.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
 		
 		<style type="text/css">
 		</style>
-		
-		<script type="text/javascript">
-			var app;
-			$(function(){
-				initGamediv();
-				
-				
-			    app = new Vue({
-			        el: '#gamediv',
-			        data: {
-			        	nowarray:currentarray,
-			        	cellWidth:cellWidth,
-			        	cellHeight:cellHeight,
-			        	updatakey:true
-			        }
-			        
-			    });
-			});
-			
-		</script>
 	</head>
 	<body>
-		<div id="gamediv" :style="{top:cellHeight+'px', left:'50px', width:cellWidth*10+'px', height:cellHeight*20+'px'}">
-		    <div style="display: none;">
-		    	{{updatakey}}
-		    </div>
+		<div id="gamediv" class = "gamediv" :style="{top:cellHeight+'px', left:'50px', width:cellWidth*gsMatrixCols+'px', height:cellHeight*gsMatrixRows+'px'}">			
 		</div>
-		
+		<div id="nextdiv" class = "gamediv" :style="{top:cellHeight+'px', left:cellWidth*gsMatrixCols+100+'px', width:cellWidth*4+'px', height:cellHeight*4+'px'}">			
+		</div>
 		<div style="position: absolute;left:500px;">
-			<button type="button" onclick="test()">Click Me!</button>
+			<button type="button" onclick="test()">Click Me for test!</button>
 			<button type="button" onclick="bigger()">Bigger!</button>
 			<button type="button" onclick="smaller()">Smaller!</button>
 			<button type="button" onclick="RestoreDefault()">Restore default!</button>
@@ -47,16 +27,9 @@
 		
 		<script>
 			function test(){
-				for(var i = 0;i < 20;i++)
-				{
-					for(var j = 0;j<10;j++)
-					{
-						currentarray[i][j] = app.updatakey;
-					}
-				}
-				
-				app.updatakey = !app.updatakey;
-				
+				app.nowarray = deepcopy(doneMatrix);
+				app.nowarray[6][6] = 1;
+				console.log(doneMatrix);
 			}
 			
 			function bigger(){
@@ -73,6 +46,58 @@
 				app.cellWidth = cellWidth;
 				app.cellHeight = cellHeight;
 			}
+			
+			window.onload = function (){
+			document.onkeydown = function (e){
+				if(e.keyCode == 38){//up
+					onup();
+				}else if(e.keyCode == 39){//right
+					onright();
+				}else if(e.keyCode == 40){//down
+					ondown();
+				}else if(e.keyCode == 37){//left
+					onleft();
+				}else if(e.keyCode == 32){//space
+					console.log(e.keyCode);
+				}
+			}
+			
+			function onup(){
+				app.currentmodel.exchange(1);
+				if( !CheckCouldMove(app.currentmodel, 0, 0) )
+				{
+					app.currentmodel.exchange(-1);
+				}
+			}
+			function ondown(){
+				if( CheckCouldMove(app.currentmodel, 1, 0) )
+				{
+					app.currentmodel.origin['x'] = app.currentmodel.origin['x'] + 1;
+				}
+				if( !CheckCouldMove(app.currentmodel, 1, 0) )
+				{
+					uptoDoneMatrix(app.currentmodel);
+					app.currentmodel = createModel();
+					console.log("test---------------------");
+					console.log(app);
+				}
+				
+				console.log(app.nextmodel.data);
+				
+			}
+			function onleft(){
+				if( CheckCouldMove(app.currentmodel, 0, -1) )
+				{
+					app.currentmodel.origin['y'] = app.currentmodel.origin['y'] - 1;
+				}
+			}
+			function onright(){
+				if( CheckCouldMove(app.currentmodel, 0, 1) )
+				{
+					app.currentmodel.origin['y'] = app.currentmodel.origin['y'] + 1;
+				}
+			}
+		}
 		</script>
 	</body>
 </html>
