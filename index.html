@@ -77,12 +77,9 @@
 				if( !CheckCouldMove(app.currentmodel, 1, 0) )
 				{
 					uptoDoneMatrix(app.currentmodel);
-					app.currentmodel = createModel();
-					console.log("test---------------------");
-					console.log(app);
+					app.currentmodel = app.nextmodel;
+					app.nextmodel = createModel();
 				}
-				
-				console.log(app.nextmodel.data);
 				
 			}
 			function onleft(){
