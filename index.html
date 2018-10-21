@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/modelMatrixs.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/models.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/game.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
@@ -77,6 +78,9 @@
 				if( !CheckCouldMove(app.currentmodel, 1, 0) )
 				{
 					uptoDoneMatrix(app.currentmodel);
+					
+					CheckEliminate();
+					
 					app.currentmodel = app.nextmodel;
 					app.nextmodel = createModel();
 				}

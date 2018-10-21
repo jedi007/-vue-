@@ -1,4 +1,3 @@
-
 function CheckCouldMove(model, x, y){
 	
 	let len = model.data.length;
@@ -45,4 +44,36 @@ function uptoDoneMatrix(model){
 			}
 		}
 	}
+}
+
+var CheckEliminate = function(){
+	var ok = false;
+	var num = 0;
+	var continuescore = 0;
+	for(var i = 0;i < 20;i++)
+	{
+		for(var j = 0;j<10;j++)
+		{
+			num += doneMatrix[i][j];
+		}
+		if(num == 10)
+		{
+			doneMatrix.splice(i,1);
+			doneMatrix.splice(0,0,[0,0,0,0,0,0,0,0,0,0]);
+			//i--;//因为删掉了当前行
+			continuescore++;
+			ok =true;
+		}
+		num = 0;
+	}
+	if(ok)
+	{
+//		playSound('sound/bang.wav');
+//		score += continuescore*continuescore;
+//		FallSpeed -= continuescore*8;
+//		console.log("FallSpeed  is changed : "+FallSpeed)
+//		window.clearInterval(FreefallID);
+//		FreefallID = window.setInterval("ondown()",FallSpeed);
+	}
+	return ok;
 }
