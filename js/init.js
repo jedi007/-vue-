@@ -1,13 +1,4 @@
-var cellWidth = 40;
-var cellHeight = 40;
 
-var gsMatrixRows = 20;
-var gsMatrixCols = 10;
-
-var FreefallID;
-var FallSpeed = 800;
-
-var doneMatrix = new Array();
 for(var i = 0;i < gsMatrixRows;i++)
 {
 	doneMatrix[i] = new Array();

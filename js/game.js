@@ -90,7 +90,6 @@ function ondown(){
 	{
 		app.currentmodel.origin['x'] = app.currentmodel.origin['x'] + 1;
 	}
-	var delay = FallSpeed*0.5;
 	setTimeout(function(){
         if( !CheckCouldMove(app.currentmodel, 1, 0) )
 		{
@@ -99,9 +98,23 @@ function ondown(){
 			CheckEliminate();
 			
 			app.currentmodel = app.nextmodel;
-			app.nextmodel = createModel();
+			if( CheckCouldMove(app.currentmodel, 1, 0) )
+				app.nextmodel = createModel();
+			else
+				{
+					stopfall();
+					
+					if(document.onkeydown)
+					{
+						setTimeout(function(){
+							alert("game over");
+						},100);
+					}
+					document.onkeydown = null;
+					
+				}
 		}
-	},delay);
+	},FallSpeed*0.5);
 }
 function onleft(){
 	if( CheckCouldMove(app.currentmodel, 0, -1) )
