@@ -20,19 +20,12 @@
 			</div>
 		</div>
 		<div style="position: absolute;left:500px;">
-			<button type="button" onclick="test()">Click Me for test!</button>
 			<button type="button" onclick="bigger()">Bigger!</button>
 			<button type="button" onclick="smaller()">Smaller!</button>
 			<button type="button" onclick="RestoreDefault()">Restore default!</button>
 		</div>
 		
 		<script>
-			function test(){
-				app.nowarray = deepcopy(doneMatrix);
-				app.nowarray[6][6] = 1;
-				console.log(doneMatrix);
-			}
-			
 			function bigger(){
 				app.cellWidth++;
 				app.cellHeight++;
@@ -63,41 +56,6 @@
 				}
 			}
 			
-			function onup(){
-				app.currentmodel.exchange(1);
-				if( !CheckCouldMove(app.currentmodel, 0, 0) )
-				{
-					app.currentmodel.exchange(-1);
-				}
-			}
-			function ondown(){
-				if( CheckCouldMove(app.currentmodel, 1, 0) )
-				{
-					app.currentmodel.origin['x'] = app.currentmodel.origin['x'] + 1;
-				}
-				if( !CheckCouldMove(app.currentmodel, 1, 0) )
-				{
-					uptoDoneMatrix(app.currentmodel);
-					
-					CheckEliminate();
-					
-					app.currentmodel = app.nextmodel;
-					app.nextmodel = createModel();
-				}
-				
-			}
-			function onleft(){
-				if( CheckCouldMove(app.currentmodel, 0, -1) )
-				{
-					app.currentmodel.origin['y'] = app.currentmodel.origin['y'] - 1;
-				}
-			}
-			function onright(){
-				if( CheckCouldMove(app.currentmodel, 0, 1) )
-				{
-					app.currentmodel.origin['y'] = app.currentmodel.origin['y'] + 1;
-				}
-			}
 		}
 		</script>
 	</body>

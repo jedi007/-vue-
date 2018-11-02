@@ -77,3 +77,49 @@ var CheckEliminate = function(){
 	}
 	return ok;
 }
+
+function onup(){
+	app.currentmodel.exchange(1);
+	if( !CheckCouldMove(app.currentmodel, 0, 0) )
+	{
+		app.currentmodel.exchange(-1);
+	}
+}
+function ondown(){
+	if( CheckCouldMove(app.currentmodel, 1, 0) )
+	{
+		app.currentmodel.origin['x'] = app.currentmodel.origin['x'] + 1;
+	}
+	var delay = FallSpeed*0.5;
+	setTimeout(function(){
+        if( !CheckCouldMove(app.currentmodel, 1, 0) )
+		{
+			uptoDoneMatrix(app.currentmodel);
+			
+			CheckEliminate();
+			
+			app.currentmodel = app.nextmodel;
+			app.nextmodel = createModel();
+		}
+	},delay);
+}
+function onleft(){
+	if( CheckCouldMove(app.currentmodel, 0, -1) )
+	{
+		app.currentmodel.origin['y'] = app.currentmodel.origin['y'] - 1;
+	}
+}
+function onright(){
+	if( CheckCouldMove(app.currentmodel, 0, 1) )
+	{
+		app.currentmodel.origin['y'] = app.currentmodel.origin['y'] + 1;
+	}
+}
+
+function beginfall(){
+	FreefallID = window.setInterval("ondown()",FallSpeed);
+}
+
+function stopfall(){
+	window.clearInterval(FreefallID);
+}
