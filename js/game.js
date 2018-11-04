@@ -63,6 +63,7 @@ var CheckEliminate = function(){
 			//i--;//因为删掉了当前行
 			continuescore++;
 			ok =true;
+			app.score += 100;
 		}
 		num = 0;
 	}
@@ -99,20 +100,24 @@ function ondown(){
 			
 			app.currentmodel = app.nextmodel;
 			if( CheckCouldMove(app.currentmodel, 1, 0) )
+			{
 				app.nextmodel = createModel();
+				console.log("----- show sync value: " + app.speed.value);
+			}
 			else
+			{
+				stopfall();
+				window.clearInterval(SettimeID);
+				
+				if(document.onkeydown)
 				{
-					stopfall();
-					
-					if(document.onkeydown)
-					{
-						setTimeout(function(){
-							alert("game over");
-						},100);
-					}
-					document.onkeydown = null;
-					
+					setTimeout(function(){
+						alert("game over");
+					},100);
 				}
+				document.onkeydown = null;
+				
+			}
 		}
 	},FallSpeed*0.5);
 }
@@ -130,7 +135,7 @@ function onright(){
 }
 
 function beginfall(){
-	FreefallID = window.setInterval("ondown()",FallSpeed);
+	FreefallID = window.setInterval("ondown()",FallSpeed*( (101-app.speed.value)/100) );
 }
 
 function stopfall(){

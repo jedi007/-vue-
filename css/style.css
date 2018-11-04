@@ -22,3 +22,8 @@
 	/*border: 1px solid black;*/
 	box-shadow: #888888 1px 1px 1px 1px inset;//边框阴影
 }
+
+li{
+	list-style: none;
+	background-color: deepskyblue;
+}

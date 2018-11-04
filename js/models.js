@@ -3,9 +3,17 @@ var createModel = function(){
 	console.log("create new model");
 	var obj = new Object();
 	
-	var indexi = Math.round(Math.random()*10*DifficultyLv)%DifficultyLv;
-	if(indexi>7)
-		indexi ++;
+	var indexi;
+	console.log("test ---------- : " + typeof(app));
+	if( typeof(app) == "undefined")
+		indexi = Math.round(Math.random()*100*DifficultyLv)%DifficultyLv;
+	else
+	{
+		indexi = Math.round(Math.random()*100*app.difficutyLv.value)%app.difficutyLv.value;
+		console.log("test ---------- diflv : " + app.difficutyLv.value);
+	}
+		
+	
 		
 	obj.indexi = indexi;
 	obj.indexm = 0;

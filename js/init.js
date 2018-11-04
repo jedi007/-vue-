@@ -36,13 +36,30 @@ var initNextdiv = function(){
 	$("#nextdiv").html(html);
 }
 
-var app,appnext;
+
 $(function(){
 	initGamediv();
 	initNextdiv();
 	
+	var infoboard = {
+        template: "#infoboard",
+        props: ['usetime','score','cspeed','cdiflv'],
+        watch: {
+            'cspeed.value': function (newV, oldV) {
+                console.log("in child : the value changed from "+oldV +" to " + newV);
+                stopfall();
+                beginfall();
+            }
+        }
+    };
     app = new Vue({
         el: '#gamediv',
+        components: {infoboard},
+        watch: {
+            'speed.value': function (newV, oldV) {
+                console.log("in father : the value changed from "+oldV +" to " + newV);
+            }
+        },
         data: {
         	currentmodel:createModel(),
         	nextmodel:createModel(),
@@ -50,14 +67,18 @@ $(function(){
         	cellWidth:cellWidth,
         	cellHeight:cellHeight,
         	gsMatrixRows:gsMatrixRows,
-        	gsMatrixCols:gsMatrixCols
+        	gsMatrixCols:gsMatrixCols,
+        	usetime:0,
+        	score:0,
+        	speed:{value:1},  //实测值为一个对象才能使用.sync实现父子组件同步
+        	difficutyLv:{value:1}
         	
         }
         
     });
-});
-
-			
-$(function(){
-	beginfall();
+    
+    beginfall();
+	SettimeID = setInterval(function(){
+		app.usetime = (Date.now() - tBegin)/1000;
+	},100)
 });

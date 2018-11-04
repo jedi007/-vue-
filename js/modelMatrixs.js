@@ -1,5 +1,3 @@
-var DifficultyLv = 8;
-
 var modelMatrixs = new Array();
 var modelMatrixs0 = [   [[0,0,0,0],
 					     [0,1,0,0],
@@ -118,16 +116,3 @@ modelMatrixs[5] = modelMatrixs5;
 modelMatrixs[6] = modelMatrixs6;
 modelMatrixs[7] = modelMatrixs7;
 //以上是基础难度模块
-
-var cellWidth = 40;
-var cellHeight = 40;
-
-var gsMatrixRows = 20;
-var gsMatrixCols = 10;
-
-var FreefallID;
-var FallSpeed = 800;
-
-var doneMatrix = new Array();
-
-var isover = false;
