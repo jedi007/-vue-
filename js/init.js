@@ -43,7 +43,7 @@ $(function(){
 	
 	var infoboard = {
         template: "#infoboard",
-        props: ['usetime','score','cspeed','cdiflv'],
+        props: ['usetime','score','cspeed','cdiflv','pwidth','pheight'],
         watch: {
             'cspeed.value': function (newV, oldV) {
                 console.log("in child : the value changed from "+oldV +" to " + newV);

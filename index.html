@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<script type="text/x-template" id="infoboard">
-		    <div style="position: absolute;left: 600px;top: 500px;">
+		    <div style="position: absolute;" :style="{left:pwidth*12+'px',top:pheight*10+'px'}">
 		        <ul>
 		        	<li style="width:300px;"><h5>用时: {{usetime}} s</h5></li>
 		        	<li><h5>得分: {{score}}</h5></li>
@@ -33,13 +33,13 @@
 			<div id="nextdiv" class = "gamediv" :style="{top:cellHeight+'px', left:cellWidth*gsMatrixCols+100+'px', width:cellWidth*4+'px', height:cellHeight*4+'px'}">		
 			</div>
 			
-			<infoboard :usetime="usetime" :score="score" :cspeed="speed" :cdiflv="difficutyLv"></infoboard>
+			<infoboard :usetime="usetime" :score="score" :cspeed="speed" :cdiflv="difficutyLv" :pwidth="cellWidth" :pheight="cellHeight"></infoboard>
 			
 		</div>
 		<div style="position: absolute;left:500px;">
-			<button type="button" onclick="bigger()">Bigger!</button>
-			<button type="button" onclick="smaller()">Smaller!</button>
-			<button type="button" onclick="RestoreDefault()">Restore default!</button>
+			<button type="button" class="btn btn-lg btn-danger" onclick="bigger()">放大</button>
+			<button type="button" class="btn btn-lg btn-danger" onclick="smaller()">缩小</button>
+			<button type="button" class="btn btn-lg btn-danger" onclick="RestoreDefault()">还原</button>
 		</div>
 		
 		<script>
