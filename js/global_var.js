@@ -8,7 +8,7 @@ var FreefallID;
 var SettimeID;
 var FallSpeed = 800;
 
-var DifficultyLv = 8;
+var DifficultyLv = 1;
 
 var doneMatrix = new Array();
 var app;

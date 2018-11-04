@@ -3,18 +3,8 @@ var createModel = function(){
 	console.log("create new model");
 	var obj = new Object();
 	
-	var indexi;
-	console.log("test ---------- : " + typeof(app));
-	if( typeof(app) == "undefined")
-		indexi = Math.round(Math.random()*100*DifficultyLv)%DifficultyLv;
-	else
-	{
-		indexi = Math.round(Math.random()*100*app.difficutyLv.value)%app.difficutyLv.value;
-		console.log("test ---------- diflv : " + app.difficutyLv.value);
-	}
-		
-	
-		
+	var indexi = Math.round(Math.random()*100*DifficultyLv)%DifficultyLv;
+				
 	obj.indexi = indexi;
 	obj.indexm = 0;
 	obj.data = modelMatrixs[obj.indexi][obj.indexm];

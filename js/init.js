@@ -49,6 +49,9 @@ $(function(){
                 console.log("in child : the value changed from "+oldV +" to " + newV);
                 stopfall();
                 beginfall();
+            },
+            'cdiflv.value': function (newV, oldV) {
+            	DifficultyLv = 7 + 1*newV;
             }
         }
     };

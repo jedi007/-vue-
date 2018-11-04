@@ -107,6 +107,44 @@ var modelMatrixs7 = [   [[0,1,1,0],
 					     [0,0,0,0]
 					    ]
 					];
+var modelMatrixs8 = [   [[1,0,0,0],
+					     [1,0,0,0],
+					     [1,1,1,0],
+					     [0,0,0,0]
+					    ],
+					    [[0,0,1,0],
+					     [0,0,1,0],
+					     [1,1,1,0],
+					     [0,0,0,0]
+					    ],
+					    [[1,1,1,0],
+					     [0,0,1,0],
+					     [0,0,1,0],
+					     [0,0,0,0]
+					    ],
+					    [[1,1,1,0],
+					     [1,0,0,0],
+					     [1,0,0,0],
+					     [0,0,0,0]
+					    ]
+					];
+var modelMatrixs9 = [   [[1,1,1,0],
+					     [0,1,0,0],
+					     [1,1,1,0],
+					     [0,0,0,0]
+					    ],
+					    [[1,0,1,0],
+					     [1,1,1,0],
+					     [1,0,1,0],
+					     [0,0,0,0]
+					    ]
+					];
+var modelMatrixs10 = [   [[1,1,1,0],
+					     [1,0,1,0],
+					     [1,1,1,0],
+					     [0,0,0,0]
+					    ]
+					];
 modelMatrixs[0] = modelMatrixs0;
 modelMatrixs[1] = modelMatrixs1;
 modelMatrixs[2] = modelMatrixs2;
@@ -115,4 +153,9 @@ modelMatrixs[4] = modelMatrixs4;
 modelMatrixs[5] = modelMatrixs5;
 modelMatrixs[6] = modelMatrixs6;
 modelMatrixs[7] = modelMatrixs7;
+modelMatrixs[8] = modelMatrixs8;
+modelMatrixs[9] = modelMatrixs9;
+modelMatrixs[10] = modelMatrixs10;
 //以上是基础难度模块
+
+DifficultyLv = 8;
