@@ -20,11 +20,11 @@
 		<script type="text/x-template" id="infoboard">
 		    <div style="position: absolute;" :style="{left:pwidth*12+'px',top:pheight*10+'px'}">
 		        <ul>
-		        	<li style="width:300px;"><h5>用时: {{usetime}} s</h5></li>
-		        	<li><h5>得分: {{score}}</h5></li>
+		        	<li style="width:300px;"><h3 style="color: red;">用时: {{usetime}} s</h3></li>
+		        	<li><h3 style="color: red;">得分: {{score}}</h3></li>
 		        	
 		        	<li>速度: &nbsp;{{cspeed.value}}<input type="range"  min="1" max="100" class="form-control" v-model="cspeed.value"/></li>
-		        	<li>难度: &nbsp;{{cdiflv.value}}<input type="range"  min="1" max="4" class="form-control" v-model="cdiflv.value"/></li>
+		        	<li style="margin-top: 10px;">难度: &nbsp;{{cdiflv.value}}<input type="range"  min="1" max="4" class="form-control" v-model="cdiflv.value"/></li>
 		        </ul>
 		    </div>
 		    
